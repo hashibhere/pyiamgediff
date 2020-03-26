@@ -1,0 +1,22 @@
+#just a small tutorial
+# import required packages
+import cv2
+import numpy as np
+
+#set image(alternatively you can use argparse https://docs.python.org/3/library/argparse.html)
+#you can also convert the iamge yo gray scale using cv2.IMREAD_GRAYSCALE to get better contast
+image1 = cv2.imread("your_filepath")
+image2 = cv2.imread("your_filepath")
+
+#finding difference using numpy(alternatively you acn use scikit structural similarity https://pythonmachinelearning.pro/structural-similarity-tutorial/)
+
+difference = cv2.subtract(image1, image2)
+result = not np.any(difference)
+if result is True:
+    print('images are same')
+else:
+    cv2.imwrite('your_reault_image_path' , difference)
+    cv2.imshow('your_reault_image_path', difference)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    print("Images are different")
